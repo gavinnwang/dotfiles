@@ -1,4 +1,5 @@
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -29,6 +30,24 @@ require("lazy").setup({
       },
     },
   },
+{
+  "ggandor/leap.nvim",
+  enabled = true,
+  keys = {
+    { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+    { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+    { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+  },
+  config = function(_, opts)
+    local leap = require("leap")
+    for k, v in pairs(opts) do
+      leap.opts[k] = v
+    end
+    leap.add_default_mappings(true)
+    vim.keymap.del({ "x", "o" }, "x")
+    vim.keymap.del({ "x", "o" }, "X")
+  end,
+},
   {
   'stevearc/oil.nvim',
   opts = {},
@@ -197,3 +216,11 @@ require("catppuccin").setup({
 })
 
 vim.cmd.colorscheme("catppuccin")
+
+vim.api.nvim_set_keymap('n', 'n', '10jzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'm', '10kzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'N', '<C-d>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'M', '<C-u>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'va', 'v$h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'vi', 'v0w', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gm', 'gM', { noremap = true, silent = true })
