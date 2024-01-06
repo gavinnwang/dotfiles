@@ -1,7 +1,5 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -16,9 +14,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 require("lazy").setup({
   'tpope/vim-sleuth',
-{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
   {
     'nvim-lualine/lualine.nvim',
     opts = {
@@ -30,33 +31,33 @@ require("lazy").setup({
       },
     },
   },
-{
-  "ggandor/leap.nvim",
-  enabled = true,
-  keys = {
-    { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-    { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
-    { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
-  },
-  config = function(_, opts)
-    local leap = require("leap")
-    for k, v in pairs(opts) do
-      leap.opts[k] = v
-    end
-    leap.add_default_mappings(true)
-    vim.keymap.del({ "x", "o" }, "x")
-    vim.keymap.del({ "x", "o" }, "X")
-  end,
-},
   {
-  'stevearc/oil.nvim',
-  opts = {},
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-},
+    "ggandor/leap.nvim",
+    enabled = true,
+    keys = {
+      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+    },
+    config = function(_, opts)
+      local leap = require("leap")
+      for k, v in pairs(opts) do
+        leap.opts[k] = v
+      end
+      leap.add_default_mappings(true)
+      vim.keymap.del({ "x", "o" }, "x")
+      vim.keymap.del({ "x", "o" }, "X")
+    end,
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-	          { 'williamboman/mason.nvim', config = true },
+      { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
     }
@@ -74,8 +75,27 @@ require("lazy").setup({
     },
   },
   -- gc to comment
-    { 'numToStr/Comment.nvim', opts = {} },
-     {
+  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+      -- Only load if `make` is available. Make sure you have the system
+      -- requirements installed.
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        -- NOTE: If you are having trouble with this installation,
+        --       refer to the README for telescope-fzf-native for more instructions.
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+    },
+  },
+  {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -83,7 +103,7 @@ require("lazy").setup({
     },
     build = ':TSUpdate',
   },
-    {
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
@@ -105,10 +125,9 @@ require("lazy").setup({
 }, {})
 
 vim.defer_fn(function()
-
   require('nvim-treesitter.configs').setup {
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'bash' },
-  auto_install = false,
+    auto_install = false,
 
     highlight = { enable = true },
     indent = { enable = true }
@@ -116,7 +135,7 @@ vim.defer_fn(function()
 end, 0)
 
 local on_attach = function(_, bufnr)
-    local nmap = function(keys, func, desc)
+  local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
     end
@@ -171,7 +190,26 @@ mason_lspconfig.setup_handlers {
 require("oil").setup()
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      },
+    },
+  },
+}
 pcall(require('telescope').load_extension, 'fzf')
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>/', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -211,7 +249,7 @@ cmp.setup {
 }
 
 require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
+  flavour = "mocha", -- latte, frappe, macchiato, mocha
   transparent_background = true,
 })
 
