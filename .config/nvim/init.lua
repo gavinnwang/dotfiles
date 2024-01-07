@@ -19,7 +19,7 @@ vim.g.maplocalleader = " "
 
 require("lazy").setup({
   'tpope/vim-sleuth',
-  { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
+  { 'catppuccin/nvim',        name = "catppuccin", priority = 1000 },
   {
     'nvim-lualine/lualine.nvim',
     opts = {
@@ -122,6 +122,15 @@ require("lazy").setup({
       },
     },
   },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
 }, {})
 
 vim.defer_fn(function()
@@ -149,6 +158,18 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 end
+
+-- ctrl f to format and save
+vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua vim.lsp.buf.format(); vim.cmd("w")<CR>', { noremap = true, silent = true })
+
+-- save will trigger format
+vim.cmd [[
+  augroup AutoFormatOnSave
+    autocmd!
+    autocmd BufWritePre * lua vim.lsp.buf.format()
+  augroup END
+]]
+
 
 require('mason').setup()
 require('mason-lspconfig').setup()
@@ -201,15 +222,16 @@ require('telescope').setup {
   },
 }
 pcall(require('telescope').load_extension, 'fzf')
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
+-- vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[F]ind [F]iles' })
+-- vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = '[S]earch [R]ecently opened files' })
+vim.keymap.set('n', '<leader>ff', require('telescope.builtin').git_files, { desc = '[F]ind git [F]iles' })
+vim.keymap.set('n', '<leader>sf', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
-end, { desc = '[/] Fuzzily search in current buffer' })
+end, { desc = '[S]earch current [F]ile buffer fuzzily' })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -262,3 +284,5 @@ vim.api.nvim_set_keymap('n', 'M', '<C-u>zz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'va', 'v$h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'vi', 'v0w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gm', 'gM', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>TroubleToggle<CR>", { noremap = true, silent = true })
