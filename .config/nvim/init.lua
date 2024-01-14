@@ -1,5 +1,13 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.number = true
+vim.o.ruler = true
+vim.o.autoindent = true
+vim.o.smartindent = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -19,7 +27,8 @@ vim.g.maplocalleader = " "
 
 require("lazy").setup({
   'tpope/vim-sleuth',
-  { 'catppuccin/nvim',        name = "catppuccin", priority = 1000 },
+  'ixru/nvim-markdown',
+  { 'catppuccin/nvim',       name = "catppuccin", priority = 1000 },
   {
     'nvim-lualine/lualine.nvim',
     opts = {
@@ -153,6 +162,8 @@ local on_attach = function(_, bufnr)
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -160,7 +171,8 @@ local on_attach = function(_, bufnr)
 end
 
 -- ctrl f to format and save
-vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua vim.lsp.buf.format(); vim.cmd("w")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua vim.lsp.buf.format(); vim.cmd("w")<CR>',
+  { noremap = true, silent = true })
 
 -- save will trigger format
 vim.cmd [[
@@ -170,6 +182,8 @@ vim.cmd [[
   augroup END
 ]]
 
+-- ctrl c will save
+vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>:w<CR>', { noremap = true, silent = true })
 
 require('mason').setup()
 require('mason-lspconfig').setup()
@@ -253,6 +267,20 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -286,3 +314,6 @@ vim.api.nvim_set_keymap('n', 'vi', 'v0w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gm', 'gM', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>TroubleToggle<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', 'j', 'v:count ? "j" : "gj"', { expr = true, noremap = true })
+vim.api.nvim_set_keymap('n', 'k', 'v:count ? "k" : "gk"', { expr = true, noremap = true })

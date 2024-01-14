@@ -29,7 +29,15 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # opam configuration
 [[ ! -r /Users/gavinwang/.opam/opam-init/init.zsh ]] || source /Users/gavinwang/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
-alias k="kubectl"
-
 export PATH="/Applications/Racket v8.11.1/bin:$PATH"
+
 alias config='/usr/bin/git --git-dir=/Users/gavinwang/.cfg/ --work-tree=/Users/gavinwang'
+alias vim='nvim'
+alias k="kubectl"
+alias ls="eza --icons -F -H --group-directories-first --git"
+alias cd="z"
+alias cat="bat"
+alias trash="rm"
+
+PATH="/opt/homebrew/bin:$PATH"
+eval "$(zoxide init zsh)"
