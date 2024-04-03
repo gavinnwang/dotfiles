@@ -59,11 +59,6 @@ require("lazy").setup({
     end,
   },
   {
-    'stevearc/oil.nvim',
-    opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-  {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
@@ -86,24 +81,34 @@ require("lazy").setup({
   -- gc to comment
   { 'numToStr/Comment.nvim', opts = {} },
   {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+  }, {
+  'nvim-telescope/telescope.nvim',
+  branch = '0.1.x',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+    -- Only load if `make` is available. Make sure you have the system
+    -- requirements installed.
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      -- NOTE: If you are having trouble with this installation,
+      --       refer to the README for telescope-fzf-native for more instructions.
+      build = 'make',
+      cond = function()
+        return vim.fn.executable 'make' == 1
+      end,
     },
   },
+},
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -222,9 +227,6 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-require("oil").setup()
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -317,3 +319,5 @@ vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>TroubleToggle<CR>", { noremap = 
 
 vim.api.nvim_set_keymap('n', 'j', 'v:count ? "j" : "gj"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'v:count ? "k" : "gk"', { expr = true, noremap = true })
+
+vim.api.nvim_set_keymap('n', '<leader><leader>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
