@@ -5,7 +5,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
@@ -32,6 +32,7 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 alias config='/usr/bin/git --git-dir=/Users/gavinwang/.cfg/ --work-tree=/Users/gavinwang'
 alias vim='nvim'
+alias v='nvim'
 alias k="kubectl"
 alias ls="eza --icons -F -H --group-directories-first --git"
 alias cd="z"
@@ -41,12 +42,7 @@ alias rm="trash"
 alias black="ssh gwang@black.tailf7f8d.ts.net"
 
 PATH="/opt/homebrew/bin:$PATH"
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/gavinwang/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/gavinwang/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/gavinwang/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/gavinwang/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+eval "$(zoxide init zsh)"
+# eval "$(starship init zsh)"

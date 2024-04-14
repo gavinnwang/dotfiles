@@ -188,7 +188,7 @@ vim.cmd [[
 ]]
 
 -- ctrl c will save
-vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>:w<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>:w<CR>', { noremap = true, silent = true })
 
 require('mason').setup()
 require('mason-lspconfig').setup()
@@ -320,4 +320,4 @@ vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>TroubleToggle<CR>", { noremap = 
 vim.api.nvim_set_keymap('n', 'j', 'v:count ? "j" : "gj"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'v:count ? "k" : "gk"', { expr = true, noremap = true })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
