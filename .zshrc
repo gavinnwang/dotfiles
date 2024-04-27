@@ -46,3 +46,4 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 eval "$(zoxide init zsh)"
 # eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"

@@ -1,8 +1,7 @@
 fish_add_path /usr/local/bin
-fish_add_path ~/.local/share/cargo/bin
-fish_add_path ~/.local/share/npm/bin
 fish_add_path ~/bin
 fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/opt/node@20/bin
 
 fish_vi_key_bindings
 
@@ -18,8 +17,9 @@ starship init fish | source
 
 alias ls='eza --icons -F -H --group-directories-first --git'
 alias cat bat
-alias vim nvim
+alias v nvim
 alias cd z
+alias wez='wezterm cli'
 alias rm trash
 alias config='/usr/bin/git --git-dir=/Users/gavinwang/.cfg/ --work-tree=/Users/gavinwang'
 
