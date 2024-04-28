@@ -11,24 +11,12 @@ config.color_scheme = "catppuccin-mocha"
 
 config.font_size = 16.0
 
+config.font =
+  wezterm.font('JetBrains Mono', { weight = 500, italic = false })
+
 config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 
 local act = wezterm.action
-
-config.keys = {
-	{
-		key = "w",
-		mods = "CMD",
-		action = act.CloseCurrentTab({ confirm = false }),
-	},
-	{
-		key = "9",
-		mods = "CTRL",
-		action = act.PaneSelect({
-			alphabet = "1234567890",
-		}),
-	},
-}
 
 local w = require('wezterm')
 
@@ -81,6 +69,11 @@ local function split_nav(resize_or_move, key)
 end
 
 config.keys= {
+	{
+		key = "w",
+		mods = "CMD",
+		action = act.CloseCurrentTab({ confirm = false }),
+	},
     -- move between split panes
     split_nav('move', 'h'),
     split_nav('move', 'j'),
