@@ -21,7 +21,7 @@ alias v nvim
 alias cd z
 alias wez='wezterm cli'
 alias rm trash
-alias config='/usr/bin/git --git-dir=/Users/gavinwang/.cfg/ --work-tree=/Users/gavinwang'
+alias config='/usr/bin/git --git-dir=/Users/gavinwang/.cfg/ --work-tree=/Users/gavinwang/.config'
 
 
 if status is-interactive
