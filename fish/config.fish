@@ -23,7 +23,7 @@ alias wez='wezterm cli'
 alias rm trash
 alias config='/usr/bin/git --git-dir=/Users/gavinwang/.cfg/ --work-tree=/Users/gavinwang/.config'
 
-
+thefuck --alias | source
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
