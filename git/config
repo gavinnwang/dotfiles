@@ -1,18 +1,28 @@
 [color]
-    ui = true
+  ui = true
 [core]
-    editor = nvim
-    excludesfile = ~/.gitignore
+  editor = nvim
+  excludesfile = ~/.gitignore
 	pager = delta
+[delta]
+  side-by-side = true
+  line-numbers = true
+  navigate = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
+[interactive]
+  diffFilter = delta --color-only
 [user]
-    name = Gavin Wang
-    email = gavinwang313@gmail.com
+  name = Gavin Wang
+  email = gavinwang313@gmail.com
 [credential]
-    helper = cache
+  helper = cache
 [init]
-    defaultbranch = main
+  defaultbranch = main
 [alias]
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%D%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%D%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
