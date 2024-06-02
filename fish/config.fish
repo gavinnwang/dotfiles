@@ -11,7 +11,6 @@ function finder
 end
 
 zoxide init fish | source
-thefuck --alias | source
 fzf --fish | source
 starship init fish | source
 
