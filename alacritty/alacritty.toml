@@ -71,8 +71,3 @@ mods = "Alt"
 chars = "\u001Bi"
 key = "I"
 mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001Bi"
-key = "I"
-mods = "Alt"
