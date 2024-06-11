@@ -17,7 +17,7 @@ config.window_padding = {
 	bottom = 0,
 }
 config.font =
-  wezterm.font('JetBrains Mono', { weight = 200, italic = false })
+  wezterm.font('JetBrains Mono', { weight = 400, italic = false })
 
 config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 
