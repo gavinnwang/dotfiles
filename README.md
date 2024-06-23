@@ -1,3 +1,4 @@
 
-Install: `git clone https://github.com/wry0313/dotfiles ~/dotfiles` 
-stow .
+Install: 
+`git clone https://github.com/gavinnwang/dotfiles ~/dotfiles` 
+`stow .`
