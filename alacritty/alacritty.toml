@@ -1,9 +1,6 @@
 [font]
 size = 16.0
 
-[font.glyph_offset]
-x = 0
-y = 0
 
 [font.bold]
 family = "Iosevka Nerd Font"
@@ -16,6 +13,10 @@ style = "Italic"
 [font.normal]
 family = "Iosevka Nerd Font"
 style = "Regular"
+
+[font.glyph_offset]
+x = 0
+y = 0
 
 [font.offset]
 x = 0
