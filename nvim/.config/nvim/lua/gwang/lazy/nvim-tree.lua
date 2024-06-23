@@ -48,7 +48,6 @@ return {
           folder_arrow = true,
           git = true,
         },
-
         glyphs = {
           default = '󰈚',
           symlink = '',
