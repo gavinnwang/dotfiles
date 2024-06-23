@@ -1,4 +1,4 @@
 
 Install: 
 `git clone https://github.com/gavinnwang/dotfiles ~/dotfiles` 
-`stow .`
+`stow tmux stow nvim stow alacritty`
