@@ -13,12 +13,6 @@ vim.keymap.set('n', 'gm', 'gM', { desc = 'Move to the middle of the screen' })
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
 
--- Tmux navigation keymaps
-vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>')
-vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>')
-vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>')
-vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>')
-
 -- clear search highlights on pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
