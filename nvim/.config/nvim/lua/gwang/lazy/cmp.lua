@@ -67,7 +67,6 @@ return { -- Autocompletion
     'hrsh7th/cmp-buffer',
   },
   config = function()
-    -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
@@ -85,10 +84,12 @@ return { -- Autocompletion
             side_padding = 1,
             winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
             scrollbar = false,
+            border = border 'CmpBorder',
           },
           documentation = {
             border = border 'CmpDocBorder',
             winhighlight = 'Normal:CmpDoc',
+            scrollbar = false,
           },
         },
       },

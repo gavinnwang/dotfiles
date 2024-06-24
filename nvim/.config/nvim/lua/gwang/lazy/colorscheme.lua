@@ -1,3 +1,13 @@
+-- return {
+--   'rose-pine/neovim',
+--   name = 'rose-pine',
+--   priority = 1000,
+--   init = function()
+--     vim.o.termguicolors = true
+--     vim.cmd.colorscheme 'rose-pine'
+--     vim.cmd.hi 'Comment gui=none'
+--   end,
+-- }
 return {
   'folke/tokyonight.nvim',
   priority = 1000,
@@ -7,7 +17,6 @@ return {
     vim.cmd.hi 'Comment gui=none'
   end,
 }
-
 --[[ M = {
   'notken12/base46-colors',
   name = 'base46',
