@@ -2,6 +2,11 @@ return {
   'nvim-tree/nvim-tree.lua',
   cmd = { 'NvimTreeToggle', 'NvimTreeClose' },
   opts = {
+    on_attach = function(bufnr)
+      require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
+      -- don't trigger m
+      vim.keymap.del('n', 'm', { buffer = bufnr })
+    end,
     filters = {
       dotfiles = false,
     },
