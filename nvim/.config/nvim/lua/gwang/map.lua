@@ -1,41 +1,33 @@
-vim.keymap.set('n', 'n', '10jzz', { desc = 'Move cursor down 10 lines and center' })
-vim.keymap.set('n', 'm', '10kzz', { desc = 'Move cursor up 10 lines and center' })
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { desc = 'Center' })
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { desc = 'Center' })
+local function set_keymap(mode, lhs, rhs, desc)
+  vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+end
 
--- vim.keymap.set('n', 'va', 'v$', { desc = 'Select all text from cursor to end of line' })
--- vim.keymap.set('n', 'vi', 'v0', { desc = 'Select all text from cursor to beginning of line' })
-vim.keymap.set('n', 'gm', 'gM', { desc = 'Move to the middle of the screen' })
+-- Example usage of the helper function
+set_keymap('n', 'n', '10jzz', 'Move cursor down 10 lines and center')
+set_keymap('n', 'm', '10kzz', 'Move cursor up 10 lines and center')
+set_keymap('n', '<C-d>', '<C-d>zz', 'Center')
+set_keymap('n', '<C-u>', '<C-u>zz', 'Center')
+
+-- Additional mappings
+set_keymap('n', 'gm', 'gM', 'Move to the middle of the screen')
 
 -- Easier navigation for wrapped lines
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', 'k', 'gk')
+set_keymap('n', 'j', 'gj', nil)
+set_keymap('n', 'k', 'gk', nil)
 
--- clear search highlights on pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
--- vim.keymap.set('n', '<C-x>', '<C-w>j :q <CR> <C-w>l', { desc = 'Close bottom tab' })
+-- Clear search highlights on pressing <Esc> in normal mode
+set_keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', nil)
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
--- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+set_keymap('n', '[d', vim.diagnostic.goto_prev, 'Go to previous [D]iagnostic message')
+set_keymap('n', ']d', vim.diagnostic.goto_next, 'Go to next [D]iagnostic message')
+set_keymap('n', '<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
 
--- Keybinds to make split navigation easier.
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
--- Highlight when yanking (copying) text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+-- Keybinds to make split navigation easier
+set_keymap('n', '<C-h>', '<C-w><C-h>', 'Move focus to the left window')
+set_keymap('n', '<C-l>', '<C-w><C-l>', 'Move focus to the right window')
+set_keymap('n', '<C-j>', '<C-w><C-j>', 'Move focus to the lower window')
+set_keymap('n', '<C-k>', '<C-w><C-k>', 'Move focus to the upper window')
 
 -- Quick exit when you don't care too much
-vim.api.nvim_set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', { noremap = true, silent = true, desc = 'Quick exit' })
+set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', 'Save and quit')

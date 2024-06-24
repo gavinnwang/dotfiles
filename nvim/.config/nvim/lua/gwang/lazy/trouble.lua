@@ -1,18 +1,18 @@
-function ToggleQuickfix()
-  local quickfix = vim.fn.getqflist()
-  if vim.tbl_isempty(quickfix) then
-    vim.cmd 'echomsg "No Quickfix items found"'
-  else
-    vim.cmd 'Trouble quickfix toggle'
-  end
-end
-
 function ToggleDiagnostics()
   local diagnostics = vim.diagnostic.get(0)
   if vim.tbl_isempty(diagnostics) then
     vim.cmd 'echomsg "No Diagnostic found"'
   else
     vim.cmd 'Trouble diagnostics toggle'
+  end
+end
+
+function ToggleQuickfix()
+  local quickfix = vim.fn.getqflist()
+  if vim.tbl_isempty(quickfix) then
+    vim.cmd 'echomsg "No Quickfix items found"'
+  else
+    vim.cmd 'Trouble qflist toggle'
   end
 end
 
