@@ -74,6 +74,8 @@ return { -- Autocompletion
 
     cmp.setup {
       formatting = {
+        fields = { 'abbr', 'kind', 'menu' },
+        expandable_indicator = true,
         format = function(_, vim_item)
           vim_item.kind = string.format('   %s %s', kind_icons[vim_item.kind], vim_item.kind)
           return vim_item
