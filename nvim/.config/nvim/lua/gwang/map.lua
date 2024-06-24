@@ -37,4 +37,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', { noremap = true, silent = true })
+-- Quick exit when you don't care too much
+vim.api.nvim_set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', { noremap = true, silent = true, desc = 'Quick exit' })
