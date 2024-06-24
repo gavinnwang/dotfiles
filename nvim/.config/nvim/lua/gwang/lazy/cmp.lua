@@ -79,18 +79,18 @@ return { -- Autocompletion
           vim_item.kind = string.format('   %s %s', kind_icons[vim_item.kind], vim_item.kind)
           return vim_item
         end,
-        window = {
-          completion = {
-            side_padding = 1,
-            winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
-            scrollbar = false,
-            border = border 'CmpBorder',
-          },
-          documentation = {
-            border = border 'CmpDocBorder',
-            winhighlight = 'Normal:CmpDoc',
-            scrollbar = false,
-          },
+      },
+      window = {
+        completion = {
+          side_padding = 1,
+          winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
+          scrollbar = false,
+          border = border 'CmpBorder',
+        },
+        documentation = {
+          border = border 'CmpDocBorder',
+          winhighlight = 'Normal:CmpDoc',
+          scrollbar = false,
         },
       },
       snippet = {
