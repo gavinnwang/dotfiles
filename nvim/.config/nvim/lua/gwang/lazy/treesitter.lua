@@ -2,7 +2,25 @@ return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   opts = {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+    ensure_installed = {
+      'bash',
+      'c',
+      'diff',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'vim',
+      'vimdoc',
+      'cpp',
+      'javascript',
+      'json',
+      'typescript',
+      'yaml',
+      'toml',
+      'go',
+      'rust',
+    },
     -- Autoinstall languages that are not installed
     auto_install = true,
     highlight = {

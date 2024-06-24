@@ -37,8 +37,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.keymap.set({ 'n', 't' }, '<A-h>', function()
-  require('gwang.term').toggle { pos = 'float', id = 'floatTerm' }
-end, { desc = 'terminal toggle floating term' })
-
 vim.api.nvim_set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', { noremap = true, silent = true })
