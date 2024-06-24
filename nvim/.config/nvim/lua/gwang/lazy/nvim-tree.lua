@@ -4,8 +4,10 @@ return {
   opts = {
     on_attach = function(bufnr)
       require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
-      -- don't trigger m
+      -- don't trigger m and ctrl t
+      -- m is used for moving up and ctrl t is for toggling term
       vim.keymap.del('n', 'm', { buffer = bufnr })
+      vim.keymap.del('n', '<C-t>', { buffer = bufnr })
     end,
     filters = {
       dotfiles = false,
