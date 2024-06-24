@@ -1,1 +1,2 @@
-require("gwang")
+require 'gwang'
+
