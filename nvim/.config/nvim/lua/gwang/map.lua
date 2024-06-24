@@ -31,3 +31,7 @@ set_keymap('n', '<C-k>', '<C-w><C-k>', 'Move focus to the upper window')
 
 -- Quick exit when you don't care too much
 set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', 'Save and quit')
+
+-- comment
+vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'comment toggle', remap = true })
+vim.keymap.set('v', '<leader>/', 'gc', { desc = 'comment toggle', remap = true })

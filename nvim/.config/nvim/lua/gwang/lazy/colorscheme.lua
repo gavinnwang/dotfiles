@@ -1,4 +1,14 @@
 return {
+  'sainnhe/sonokai',
+  priority = 1000,
+  config = function()
+    vim.o.termguicolors = true
+    vim.cmd.colorscheme 'sonokai'
+    vim.cmd 'hi Comment gui=none'
+  end,
+}
+
+--[[ return {
   'navarasu/onedark.nvim',
   priority = 1000,
   config = function()
@@ -10,7 +20,7 @@ return {
     vim.cmd.colorscheme 'onedark'
     vim.cmd 'hi Comment gui=none'
   end,
-}
+} ]]
 
 --[[ return {
   'rose-pine/neovim',

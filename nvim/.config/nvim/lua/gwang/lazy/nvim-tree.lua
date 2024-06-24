@@ -11,6 +11,7 @@ return {
     end,
     filters = {
       dotfiles = false,
+      custom = { '.git' },
     },
     disable_netrw = true,
     hijack_netrw = true,
