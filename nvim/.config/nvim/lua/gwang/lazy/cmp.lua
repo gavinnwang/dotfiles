@@ -13,7 +13,7 @@ local kind_icons = {
   Value = '  ',
   Enum = '  ',
   Keyword = '  ',
-  Snippet = '  ',
+  Snippet = '  ',
   Color = '  ',
   File = '  ',
   Reference = '  ',
@@ -83,7 +83,6 @@ return { -- Autocompletion
       window = {
         completion = {
           side_padding = 1,
-          winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
           scrollbar = false,
           border = border 'CmpBorder',
         },
