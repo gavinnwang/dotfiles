@@ -21,13 +21,6 @@ set_keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', nil)
 -- Diagnostic keymaps
 set_keymap('n', '[d', vim.diagnostic.goto_prev, 'Go to previous [D]iagnostic message')
 set_keymap('n', ']d', vim.diagnostic.goto_next, 'Go to next [D]iagnostic message')
-set_keymap('n', '<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
-
--- Keybinds to make split navigation easier
-set_keymap('n', '<C-h>', '<C-w><C-h>', 'Move focus to the left window')
-set_keymap('n', '<C-l>', '<C-w><C-l>', 'Move focus to the right window')
-set_keymap('n', '<C-j>', '<C-w><C-j>', 'Move focus to the lower window')
-set_keymap('n', '<C-k>', '<C-w><C-k>', 'Move focus to the upper window')
 
 -- Quick exit when you don't care too much
 set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', 'Save and quit')

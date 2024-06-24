@@ -10,8 +10,8 @@ local M = {
   vim.keymap.set('n', '<leader>x', '<Cmd>BufferClose<CR>'),
   config = function()
     require('barbar').setup {
-      animation = false,
-      clickable = false,
+      animation = true,
+      clickable = true,
       focus_on_close = 'previous',
     }
   end,
