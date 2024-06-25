@@ -1,4 +1,4 @@
---[[ return {
+return {
   'sainnhe/sonokai',
   priority = 1000,
   config = function()
@@ -6,7 +6,7 @@
     vim.cmd.colorscheme 'sonokai'
     vim.cmd 'hi Comment gui=none'
   end,
-} ]]
+}
 
 --[[ return {
   'navarasu/onedark.nvim',
@@ -33,7 +33,7 @@
   end,
 } ]]
 
-return {
+--[[ return {
   'folke/tokyonight.nvim',
   priority = 1000,
   init = function()
@@ -41,7 +41,7 @@ return {
     vim.cmd.colorscheme 'tokyonight-night'
     vim.cmd.hi 'Comment gui=none'
   end,
-}
+} ]]
 
 --[[ M = {
   'notken12/base46-colors',

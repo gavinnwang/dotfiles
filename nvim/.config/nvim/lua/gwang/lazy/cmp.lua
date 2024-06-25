@@ -43,32 +43,24 @@ return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
-    -- -- Snippet Engine & its associated nvim-cmp source
-    -- {
-    --   'L3MON4D3/LuaSnip',
-    --   build = (function()
-    --     if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-    --       return
-    --     end
-    --     return 'make install_jsregexp'
-    --   end)(),
-    --   dependencies = {},
-    -- },
     {
       'zbirenbaum/copilot-cmp',
       config = function()
         require('copilot_cmp').setup()
       end,
     },
-    -- 'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
-    -- 'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-buffer',
   },
   config = function()
     local cmp = require 'cmp'
-    -- local luasnip = require 'luasnip'
-    -- luasnip.config.setup {}
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' },
+      },
+    })
 
     cmp.setup {
       formatting = {
@@ -79,9 +71,10 @@ return { -- Autocompletion
           return vim_item
         end,
       },
+
       window = {
         completion = {
-          side_padding = 1,
+          side_padding = 0,
           scrollbar = false,
           border = border 'CmpBorder',
         },
@@ -91,11 +84,6 @@ return { -- Autocompletion
           scrollbar = false,
         },
       },
-      -- snippet = {
-      --   expand = function(args)
-      --     luasnip.lsp_expand(args.body)
-      --   end,
-      -- },
       completion = { completeopt = 'menu,menuone,noinsert' },
       mapping = cmp.mapping.preset.insert {
         ['<CR>'] = cmp.mapping.confirm { select = true },
@@ -103,11 +91,10 @@ return { -- Autocompletion
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<C-Space>'] = cmp.mapping.complete {},
       },
+
       sources = {
         { name = 'nvim_lsp' },
         { name = 'path' },
-        -- { name = 'buffer' },
-        -- { name = 'luasnip' },
         { name = 'copilot' },
       },
     }

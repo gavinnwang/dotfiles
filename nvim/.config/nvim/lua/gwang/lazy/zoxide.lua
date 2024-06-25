@@ -1,5 +1,5 @@
 M = {
   'nanotee/zoxide.vim',
-  cmd = { 'Z' },
+  cmd = { 'Z', 'Zi' },
 }
 return M
