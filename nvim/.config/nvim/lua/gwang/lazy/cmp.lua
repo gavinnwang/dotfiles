@@ -24,7 +24,7 @@ local kind_icons = {
   Event = '  ',
   Operator = '  ',
   TypeParameter = '  ',
-  Copilot = '  ',
+  Copilot = '  ',
 }
 local function border(hl_name)
   return {
@@ -67,11 +67,20 @@ return { -- Autocompletion
         fields = { 'abbr', 'kind', 'menu' },
         expandable_indicator = true,
         format = function(_, vim_item)
-          vim_item.kind = string.format('   %s %s', kind_icons[vim_item.kind], vim_item.kind)
+          vim_item.kind = string.format(' %s %s', kind_icons[vim_item.kind], vim_item.kind)
+          vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+          vim_item.menu = string.sub(vim_item.menu or '', 1, 10)
           return vim_item
         end,
       },
-
+      performance = {
+        debounce = 60,
+        throttle = 30,
+        fetching_timeout = 200,
+        confirm_resolve_timeout = 80,
+        async_budget = 1,
+        max_view_entries = 5,
+      },
       window = {
         completion = {
           side_padding = 0,
@@ -79,12 +88,13 @@ return { -- Autocompletion
           border = border 'CmpBorder',
         },
         documentation = {
-          border = border 'CmpDocBorder',
-          winhighlight = 'Normal:CmpDoc',
+          side_padding = 0,
           scrollbar = false,
+          winhighlight = 'Normal:CmpDoc',
+          border = border 'CmpDocBorder',
         },
       },
-      completion = { completeopt = 'menu,menuone,noinsert' },
+      completion = { completeopt = 'menu,menuone,noinsert', keyword_length = 2 },
       mapping = cmp.mapping.preset.insert {
         ['<CR>'] = cmp.mapping.confirm { select = true },
         ['<Tab>'] = cmp.mapping.select_next_item(),

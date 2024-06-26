@@ -18,6 +18,9 @@ vim.opt.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Disable auto insert comment after hitting o
+vim.opt.formatoptions:remove { 'o' }
+
 -- Save undo history
 vim.opt.undofile = true
 

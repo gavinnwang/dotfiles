@@ -17,5 +17,7 @@ return {
         ratio = 0.4,
       },
     }
+    -- Toggle copilot
+    vim.api.nvim_set_keymap('n', '<leader>cd', ':Copilot toggle<CR>:Copilot status<CR>', { noremap = true, silent = false })
   end,
 }
