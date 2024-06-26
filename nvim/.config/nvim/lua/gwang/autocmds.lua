@@ -41,3 +41,11 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  desc = 'Disable automatic comment insertion',
+  group = vim.api.nvim_create_augroup('AutoComment', {}),
+  callback = function()
+    vim.opt_local.formatoptions:remove { 'c', 'r', 'o' }
+  end,
+})
