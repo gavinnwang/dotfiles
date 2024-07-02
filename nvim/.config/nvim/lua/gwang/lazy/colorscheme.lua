@@ -77,14 +77,14 @@ return {
         functions = { italic = false },
         variables = { italic = false },
       },
-      -- colors = {
-      --   primary = '#EE579B',
-      --   secondary = '#93518B',
-      -- },
       colors = {
-        secondary = '#6EE2FF',
-        primary = '#267FB5',
+        primary = '#93518B',
+        secondary = '#EE579B',
       },
+      -- colors = {
+      --   secondary = '#6EE2FF',
+      --   primary = '#267FB5',
+      -- },
     },
   },
 }

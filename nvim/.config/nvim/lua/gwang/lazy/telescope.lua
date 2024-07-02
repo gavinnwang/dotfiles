@@ -22,7 +22,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
       },
       defaults = {
-        prompt_prefix = '   ',
+        -- prompt_prefix = '   ',
         path_display = { 'smart' },
         file_ignore_patterns = { '.git/', 'node_modules', 'build/' },
         vimgrep_arguments = {

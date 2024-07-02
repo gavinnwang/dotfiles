@@ -26,18 +26,18 @@ local kind_icons = {
   TypeParameter = '  ',
   Copilot = '  ',
 }
-local function border(hl_name)
-  return {
-    { '╭', hl_name },
-    { '─', hl_name },
-    { '╮', hl_name },
-    { '│', hl_name },
-    { '╯', hl_name },
-    { '─', hl_name },
-    { '╰', hl_name },
-    { '│', hl_name },
-  }
-end
+-- local function border(hl_name)
+--   return {
+--     { '╭', hl_name },
+--     { '─', hl_name },
+--     { '╮', hl_name },
+--     { '│', hl_name },
+--     { '╯', hl_name },
+--     { '─', hl_name },
+--     { '╰', hl_name },
+--     { '│', hl_name },
+--   }
+-- end
 
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
@@ -85,13 +85,13 @@ return { -- Autocompletion
         completion = {
           side_padding = 0,
           scrollbar = false,
-          border = border 'CmpBorder',
+          -- border = border 'CmpBorder',
         },
         documentation = {
           side_padding = 0,
           scrollbar = false,
           winhighlight = 'Normal:CmpDoc',
-          border = border 'CmpDocBorder',
+          -- border = border 'CmpDocBorder',
         },
       },
       completion = { completeopt = 'menu,menuone,noinsert', keyword_length = 2 },
