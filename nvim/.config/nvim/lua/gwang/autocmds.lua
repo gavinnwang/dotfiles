@@ -13,12 +13,6 @@ vim.api.nvim_create_autocmd('SwapExists', {
   end,
 })
 
-vim.api.nvim_create_autocmd('VimEnter', {
-  callback = function()
-    require('nvim-tree.api').tree.open()
-  end,
-})
-
 -- auto close
 local function is_modified_buffer_open(buffers)
   for _, v in pairs(buffers) do
@@ -47,5 +41,25 @@ vim.api.nvim_create_autocmd('BufEnter', {
   group = vim.api.nvim_create_augroup('AutoComment', {}),
   callback = function()
     vim.opt_local.formatoptions:remove { 'c', 'r', 'o' }
+  end,
+})
+
+-- Function to open the first file in the directory and then open nvim-tree
+local function open_first_file_and_nvim_tree()
+  if vim.fn.argc() == 0 then
+    local first_file = vim.fn.glob('*', false, true)[1]
+    if first_file ~= nil then
+      vim.cmd('edit ' .. first_file)
+    end
+  end
+  require('nvim-tree.api').tree.open()
+  vim.cmd 'wincmd h' -- Move the cursor to the left buffer (Nvim Tree)
+end
+
+-- Autocommand to call the function after Neovim has fully initialized
+vim.api.nvim_create_autocmd('VimEnter', {
+  pattern = '*',
+  callback = function()
+    vim.schedule(open_first_file_and_nvim_tree)
   end,
 })
