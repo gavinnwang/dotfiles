@@ -25,6 +25,10 @@ set_keymap('n', ']d', vim.diagnostic.goto_next, 'Go to next [D]iagnostic message
 -- Quick exit when you don't care too much
 set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', 'Save and quit')
 
+-- Use ; and ' to navigate search result
+set_keymap('n', ';', 'n', 'Next search result')
+set_keymap('n', "'", 'N', 'Previous search result')
+
 -- Comment, need remap to work
 vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'comment toggle', remap = true })
 vim.keymap.set('v', '<leader>/', 'gc', { desc = 'comment toggle', remap = true })

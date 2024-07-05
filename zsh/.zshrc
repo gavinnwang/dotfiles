@@ -77,3 +77,4 @@ vv() {
   # Open Neovim with the selected config
   NVIM_APPNAME=$(basename $config) nvim $@
 }
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

@@ -97,9 +97,9 @@ return { -- Autocompletion
       completion = { completeopt = 'menu,menuone,noinsert', keyword_length = 2 },
       mapping = cmp.mapping.preset.insert {
         ['<CR>'] = cmp.mapping.confirm { select = true },
-        ['<Tab>'] = cmp.mapping.select_next_item(),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-        ['<C-Space>'] = cmp.mapping.complete {},
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.complete(),
       },
 
       sources = {

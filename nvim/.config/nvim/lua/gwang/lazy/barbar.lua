@@ -17,6 +17,7 @@ local M = {
     vim.keymap.set('n', '<Tab>', '<Cmd>BufferNext<CR>')
     vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>')
     vim.keymap.set('n', '<leader>x', '<Cmd>BufferClose<CR>')
+    vim.keymap.set('n', '<leader>z', '<Cmd>BufferCloseAllButCurrent<CR>')
 
     -- Buffer go-to mappings
     vim.keymap.set('n', '<leader>1', '<Cmd>BufferGoto 1<CR>', { silent = true })
