@@ -6,8 +6,16 @@ return {
       require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
       -- don't trigger m and ctrl t
       -- m is used for moving up and ctrl t is for toggling term
-      vim.keymap.del('n', 'm', { buffer = bufnr })
+      local api = require 'nvim-tree.api'
+      local function opts(desc)
+        return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+      end
+      api.config.mappings.default_on_attach(bufnr)
+      vim.keymap.set('n', 'b', api.marks.toggle, opts 'Toggle Bookmark')
+      vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
+      vim.keymap.set('n', 'p', api.marks.bulk.move, opts 'Move Bookmark')
       vim.keymap.del('n', '<C-t>', { buffer = bufnr })
+      vim.keymap.del('n', 'm', { buffer = bufnr })
     end,
     filters = {
       dotfiles = false,

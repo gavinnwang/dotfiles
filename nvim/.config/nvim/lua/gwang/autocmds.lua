@@ -44,12 +44,16 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
--- Function to open the first file in the directory and then open nvim-tree
-local function open_first_file_and_nvim_tree()
+-- Function to open specific files if in a directory named 'cp'
+-- Otherwise, open the first file with specified extensions and then open nvim-tree
+local function open_files_and_nvim_tree()
   local did_edit = false
   local extensions = { '%.cpp$', '%.py$', '%.cc$', '%.c$', '%.lua$' }
 
-  if vim.fn.argc() == 0 then
+  if vim.fn.getcwd():match '/cp$' then
+    vim.cmd 'edit a.txt'
+    vim.cmd 'edit a.cpp'
+  elseif vim.fn.argc() == 0 then
     local files = vim.fn.glob('*', false, true)
     for _, file in ipairs(files) do
       for _, ext in ipairs(extensions) do
@@ -63,10 +67,10 @@ local function open_first_file_and_nvim_tree()
         break
       end
     end
-  end
-  require('nvim-tree.api').tree.open()
-  if did_edit then
-    vim.cmd 'wincmd h' -- Move the cursor to the left buffer (Nvim Tree)
+    require('nvim-tree.api').tree.open()
+    if did_edit then
+      vim.cmd 'wincmd h' -- Move the cursor to the left buffer (Nvim Tree)
+    end
   end
 end
 
@@ -74,6 +78,6 @@ end
 vim.api.nvim_create_autocmd('VimEnter', {
   pattern = '*',
   callback = function()
-    vim.schedule(open_first_file_and_nvim_tree)
+    vim.schedule(open_files_and_nvim_tree)
   end,
 })
