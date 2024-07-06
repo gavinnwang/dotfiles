@@ -46,14 +46,28 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
 -- Function to open the first file in the directory and then open nvim-tree
 local function open_first_file_and_nvim_tree()
+  local did_edit = false
+  local extensions = { '%.cpp$', '%.py$', '%.cc$', '%.c$', '%.lua$' }
+
   if vim.fn.argc() == 0 then
-    local first_file = vim.fn.glob('*', false, true)[1]
-    if first_file ~= nil then
-      vim.cmd('edit ' .. first_file)
+    local files = vim.fn.glob('*', false, true)
+    for _, file in ipairs(files) do
+      for _, ext in ipairs(extensions) do
+        if file:match(ext) then
+          vim.cmd('edit ' .. file)
+          did_edit = true
+          break
+        end
+      end
+      if did_edit then
+        break
+      end
     end
   end
   require('nvim-tree.api').tree.open()
-  vim.cmd 'wincmd h' -- Move the cursor to the left buffer (Nvim Tree)
+  if did_edit then
+    vim.cmd 'wincmd h' -- Move the cursor to the left buffer (Nvim Tree)
+  end
 end
 
 -- Autocommand to call the function after Neovim has fully initialized
