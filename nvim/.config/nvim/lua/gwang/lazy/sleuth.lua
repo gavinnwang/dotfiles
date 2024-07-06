@@ -1,1 +1,4 @@
-return { 'tpope/vim-sleuth', opt = {} }
+return {
+  'tpope/vim-sleuth',
+  opt = {},
+}

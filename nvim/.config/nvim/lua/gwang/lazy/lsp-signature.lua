@@ -1,6 +1,6 @@
 return {
   'ray-x/lsp_signature.nvim',
-  event = 'VeryLazy',
+  event = 'InsertEnter',
   opts = {
     floating_window_off_y = -1,
   },

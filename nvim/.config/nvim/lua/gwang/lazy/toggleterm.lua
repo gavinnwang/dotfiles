@@ -1,10 +1,9 @@
 return {
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    opts = {
-      open_mapping = [[<C-t>]],
-      direction = 'float',
-    },
+  'akinsho/toggleterm.nvim',
+  event = 'VeryLazy',
+  version = '*',
+  opts = {
+    open_mapping = [[<C-t>]],
+    direction = 'float',
   },
 }
