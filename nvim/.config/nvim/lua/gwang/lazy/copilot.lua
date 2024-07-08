@@ -3,15 +3,8 @@ return {
   event = 'InsertEnter',
   config = function()
     require('copilot').setup {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      keymap = {
-        jump_prev = '[[',
-        jump_next = ']]',
-        accept = '<CR>',
-        refresh = 'gr',
-        open = '<M-CR>',
-      },
+      suggestion = { enabled = true },
+      panel = { enabled = true },
       layout = {
         position = 'bottom', -- | top | left | right
         ratio = 0.4,

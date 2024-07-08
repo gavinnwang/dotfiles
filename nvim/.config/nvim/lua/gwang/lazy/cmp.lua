@@ -41,7 +41,7 @@ local kind_icons = {
 
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
+  event = 'VeryLazy',
   dependencies = {
     {
       'zbirenbaum/copilot-cmp',
@@ -49,9 +49,12 @@ return { -- Autocompletion
         require('copilot_cmp').setup()
       end,
     },
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
   },
   config = function()
     local cmp = require 'cmp'
@@ -62,6 +65,14 @@ return { -- Autocompletion
       },
     })
 
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' },
+      }, {
+        { name = 'cmdline' },
+      }),
+    })
     cmp.setup {
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },
@@ -85,13 +96,11 @@ return { -- Autocompletion
         completion = {
           side_padding = 0,
           scrollbar = false,
-          -- border = border 'CmpBorder',
         },
         documentation = {
           side_padding = 0,
           scrollbar = false,
           winhighlight = 'Normal:CmpDoc',
-          -- border = border 'CmpDocBorder',
         },
       },
       completion = { completeopt = 'menu,menuone,noinsert', keyword_length = 2 },
@@ -103,9 +112,10 @@ return { -- Autocompletion
       },
 
       sources = {
-        { name = 'nvim_lsp' },
-        { name = 'path' },
-        { name = 'copilot' },
+        { name = 'copilot', group_index = 2, priority = 1 },
+        { name = 'nvim_lsp', group_index = 2 },
+        { name = 'path', group_index = 2 },
+        { name = 'luasnip', group_index = 2 },
       },
     }
   end,
