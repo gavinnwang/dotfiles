@@ -42,12 +42,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
         entry_prefix = '  ',
         mappings = {
           i = {
-            ['<C-q>'] = acions.send_to_qflist,
+            ['<C-q>'] = actions.send_to_qflist,
             ['<C-a>'] = actions.send_selected_to_qflist,
+            ['<C-j>'] = actions.move_selection_next,
+            ['<C-k>'] = actions.move_selection_previous,
           },
           n = {
             ['<C-q>'] = actions.send_to_qflist,
             ['<C-a>'] = actions.send_selected_to_qflist,
+            ['<C-j>'] = actions.move_selection_next,
+            ['<C-k>'] = actions.move_selection_previous,
             ['q'] = actions.close,
           },
         },
