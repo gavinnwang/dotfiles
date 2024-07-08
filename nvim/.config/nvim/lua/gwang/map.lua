@@ -12,11 +12,11 @@ set_keymap('n', '<C-u>', '<C-u>zz', 'Center')
 set_keymap('n', 'gm', 'gM', 'Move to the middle of the screen')
 
 -- Easier navigation for wrapped lines
-set_keymap('n', 'j', 'gj', nil)
-set_keymap('n', 'k', 'gk', nil)
+set_keymap('n', 'j', 'gj', 'Better j')
+set_keymap('n', 'k', 'gk', 'Better k')
 
 -- Clear search highlights on pressing <Esc> in normal mode
-set_keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', nil)
+set_keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', 'Clear search highlight')
 
 -- Diagnostic keymaps
 set_keymap('n', '[d', vim.diagnostic.goto_prev, 'Go to previous [D]iagnostic message')
@@ -25,7 +25,5 @@ set_keymap('n', ']d', vim.diagnostic.goto_next, 'Go to next [D]iagnostic message
 -- Quick exit when you don't care too much
 set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', 'Save and quit')
 
--- Use ; and ' to navigate search result
--- set_keymap('n', '.', ';', 'Next find result')
-set_keymap('n', ';', 'n', 'Next search result')
-set_keymap('n', "'", 'N', 'Previous search result')
+set_keymap('n', ']q', '<cmd>cnext<CR>zz', 'Next quickfix item')
+set_keymap('n', '[q', '<cmd>cprev<CR>zz', 'Previous quickfix item')

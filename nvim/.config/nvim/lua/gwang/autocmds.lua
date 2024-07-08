@@ -7,6 +7,8 @@ local function open_files_and_nvim_tree()
   if vim.fn.getcwd():match '/cp$' then
     vim.cmd 'edit a.txt'
     vim.cmd 'edit a.cpp'
+  elseif vim.fn.getcwd():match '/gwang$' then
+    vim.cmd 'Telescope find_files'
   elseif vim.fn.argc() == 0 then
     local files = vim.fn.glob('*', false, true)
     for _, file in ipairs(files) do
