@@ -55,10 +55,10 @@ return {
       '<cmd>lua ToggleQuickfix()<cr>',
       desc = 'Quickfix List (Trouble)',
     },
-    {
-      '<leader>cs',
-      '<cmd>lua ToggleSymbols()<cr>',
-      desc = 'Symbols (Trouble)',
-    },
+    -- {
+    --   '<leader>cs',
+    --   '<cmd>lua ToggleSymbols()<cr>',
+    --   desc = 'Symbols (Trouble)',
+    -- },
   },
 }
