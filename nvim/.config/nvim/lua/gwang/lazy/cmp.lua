@@ -71,6 +71,7 @@ return { -- Autocompletion
         { name = 'path' },
       }, {
         { name = 'cmdline' },
+        { name = 'buffer' },
       }),
     })
     cmp.setup {
@@ -85,12 +86,12 @@ return { -- Autocompletion
         end,
       },
       performance = {
-        debounce = 60,
-        throttle = 30,
+        debounce = 20, -- Reduce debounce to get more frequent updates
+        throttle = 10, -- Reduce throttle to get more frequent updates
         fetching_timeout = 200,
         confirm_resolve_timeout = 80,
         async_budget = 1,
-        max_view_entries = 5,
+        max_view_entries = 7,
       },
       window = {
         completion = {
@@ -103,19 +104,20 @@ return { -- Autocompletion
           winhighlight = 'Normal:CmpDoc',
         },
       },
-      completion = { completeopt = 'menu,menuone,noinsert', keyword_length = 2 },
+      completion = { completeopt = 'menu,menuone,noinsert' },
       mapping = cmp.mapping.preset.insert {
         ['<CR>'] = cmp.mapping.confirm { select = true },
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        ['<C-j>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+        ['<C-k>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
         ['<C-n>'] = cmp.mapping.complete(),
+        ['<C-x>'] = cmp.mapping.abort(),
       },
-
       sources = {
-        { name = 'copilot', group_index = 2, priority = 1 },
-        { name = 'nvim_lsp', group_index = 2 },
-        { name = 'path', group_index = 2 },
-        { name = 'luasnip', group_index = 2 },
+        { name = 'copilot', group_index = 2, priority = 1000 },
+        { name = 'nvim_lsp', group_index = 2, keyword_length = 1 },
+        { name = 'path', group_index = 2, keyword_length = 2 },
+        { name = 'luasnip', group_index = 2, keyword_length = 2 },
+        { name = 'buffer', group_index = 2, keyword_length = 3 }, -- Adjust keyword_length for buffer
       },
     }
   end,

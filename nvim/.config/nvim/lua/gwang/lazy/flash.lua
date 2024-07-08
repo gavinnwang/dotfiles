@@ -16,7 +16,7 @@ return {
       },
       char = {
         highlight = { backdrop = false },
-        multi_line = true,
+        multi_line = false,
         char_actions = function()
           return {
             [';'] = 'next',

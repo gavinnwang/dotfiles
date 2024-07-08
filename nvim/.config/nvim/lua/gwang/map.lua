@@ -27,3 +27,6 @@ set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', 'Save and quit')
 
 set_keymap('n', ']q', '<cmd>cnext<CR>zz', 'Next quickfix item')
 set_keymap('n', '[q', '<cmd>cprev<CR>zz', 'Previous quickfix item')
+
+set_keymap('n', ']', 'n', 'Next quickfix item')
+set_keymap('n', '[', 'N', 'Previous quickfix item')

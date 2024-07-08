@@ -15,6 +15,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
   },
   cmd = { 'Telescope' },
   config = function()
+    local actions = require 'telescope.actions'
+
     require('telescope').setup {
       extensions = {
         ['ui-select'] = {
@@ -22,7 +24,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
       },
       defaults = {
-        -- prompt_prefix = '   ',
         path_display = { 'smart' },
         file_ignore_patterns = { '.git/', 'node_modules', 'build/' },
         vimgrep_arguments = {
@@ -40,7 +41,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
         layout_strategy = 'horizontal',
         entry_prefix = '  ',
         mappings = {
-          n = { ['q'] = require('telescope.actions').close },
+          i = {
+            ['<C-q>'] = acions.send_to_qflist,
+            ['<C-a>'] = actions.send_selected_to_qflist,
+          },
+          n = {
+            ['<C-q>'] = actions.send_to_qflist,
+            ['<C-a>'] = actions.send_selected_to_qflist,
+            ['q'] = actions.close,
+          },
         },
         layout_config = {
           horizontal = {
