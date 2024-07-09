@@ -26,18 +26,18 @@ local kind_icons = {
   TypeParameter = '  ',
   Copilot = '  ',
 }
--- local function border(hl_name)
---   return {
---     { '╭', hl_name },
---     { '─', hl_name },
---     { '╮', hl_name },
---     { '│', hl_name },
---     { '╯', hl_name },
---     { '─', hl_name },
---     { '╰', hl_name },
---     { '│', hl_name },
---   }
--- end
+local function border(hl_name)
+  return {
+    { '╭', hl_name },
+    { '─', hl_name },
+    { '╮', hl_name },
+    { '│', hl_name },
+    { '╯', hl_name },
+    { '─', hl_name },
+    { '╰', hl_name },
+    { '│', hl_name },
+  }
+end
 
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
@@ -97,11 +97,13 @@ return { -- Autocompletion
         completion = {
           side_padding = 0,
           scrollbar = false,
+          border = border 'NormalFloat',
         },
         documentation = {
           side_padding = 0,
           scrollbar = false,
           winhighlight = 'Normal:CmpDoc',
+          border = border 'NormalFloat',
         },
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
@@ -113,7 +115,7 @@ return { -- Autocompletion
         ['<C-x>'] = cmp.mapping.abort(),
       },
       sources = {
-        { name = 'copilot', group_index = 2, priority = 1000 },
+        { name = 'copilot', group_index = 2, priority = 1000, keyword_length = 1 },
         { name = 'nvim_lsp', group_index = 2, keyword_length = 1 },
         { name = 'path', group_index = 2, keyword_length = 2 },
         { name = 'luasnip', group_index = 2, keyword_length = 2 },
