@@ -1,10 +1,12 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     ensure_installed = {
       'bash',
       'c',
+      'cpp',
       'diff',
       'html',
       'lua',
@@ -12,7 +14,6 @@ return { -- Highlight, edit, and navigate code
       'markdown',
       'vim',
       'vimdoc',
-      'cpp',
       'javascript',
       'json',
       'typescript',
@@ -25,12 +26,20 @@ return { -- Highlight, edit, and navigate code
     auto_install = true,
     highlight = {
       enable = true,
+      additional_vim_regex_highlighting = false,
     },
     indent = { enable = true },
+    -- incremental_selection = {
+    --   enable = true,
+    --   keymaps = {
+    --     init_selection = 'gnn', -- set to `false` to disable one of the mappings
+    --     node_incremental = 'grn',
+    --     scope_incremental = 'grc',
+    --     node_decremental = 'grm',
+    --   },
+    -- },
   },
   config = function(_, opts)
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
     -- Prefer git instead of curl in order to improve connectivity in some environments
     require('nvim-treesitter.install').prefer_git = true
     ---@diagnostic disable-next-line: missing-fields

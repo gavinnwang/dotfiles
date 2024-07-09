@@ -26,6 +26,7 @@ local kind_icons = {
   TypeParameter = '  ',
   Copilot = '  ',
 }
+
 local function border(hl_name)
   return {
     { '╭', hl_name },
@@ -94,17 +95,18 @@ return { -- Autocompletion
         max_view_entries = 7,
       },
       window = {
-        completion = {
-          side_padding = 0,
-          scrollbar = false,
-          border = border 'NormalFloat',
-        },
-        documentation = {
-          side_padding = 0,
-          scrollbar = false,
-          winhighlight = 'Normal:CmpDoc',
-          border = border 'NormalFloat',
-        },
+        -- completion = {
+        --   side_padding = 0,
+        --   col_offset = 0,
+        --   scrollbar = false,
+        --   border = border 'NormalFloat',
+        -- },
+        -- documentation = {
+        --   side_padding = 0,
+        --   scrollbar = false,
+        --   winhighlight = 'Normal:CmpDoc',
+        --   border = border 'NormalFloat',
+        -- },
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
       mapping = cmp.mapping.preset.insert {
@@ -119,7 +121,7 @@ return { -- Autocompletion
         { name = 'nvim_lsp', group_index = 2, keyword_length = 1 },
         { name = 'path', group_index = 2, keyword_length = 2 },
         { name = 'luasnip', group_index = 2, keyword_length = 2 },
-        { name = 'buffer', group_index = 2, keyword_length = 3 }, -- Adjust keyword_length for buffer
+        { name = 'buffer', group_index = 2, keyword_length = 3 },
       },
     }
   end,
