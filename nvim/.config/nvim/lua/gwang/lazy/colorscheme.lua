@@ -1,3 +1,14 @@
+return {
+  'rose-pine/neovim',
+  name = 'rose-pine',
+  priority = 1000,
+  init = function()
+    vim.o.termguicolors = true
+    vim.cmd.colorscheme 'rose-pine'
+    vim.cmd.hi 'Comment gui=none'
+  end,
+}
+
 -- return {
 --   'sainnhe/sonokai',
 --   priority = 1000,
@@ -21,18 +32,6 @@
     vim.cmd 'hi Comment gui=none'
   end,
 } ]]
-
-return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
-  priority = 1000,
-  init = function()
-    vim.o.termguicolors = true
-    vim.cmd.colorscheme 'rose-pine'
-    vim.cmd.hi 'Comment gui=none'
-  end,
-}
-
 
 -- return {
 --   'folke/tokyonight.nvim',
