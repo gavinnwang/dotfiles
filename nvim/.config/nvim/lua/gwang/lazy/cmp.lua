@@ -41,7 +41,7 @@ local kind_icons = {
 
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
-  event = 'VeryLazy',
+  event = { 'InsertEnter', 'CmdlineEnter' },
   dependencies = {
     {
       'zbirenbaum/copilot-cmp',
