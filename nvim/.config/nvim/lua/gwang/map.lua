@@ -30,3 +30,6 @@ set_keymap('n', '{', 'N', 'Previous search item')
 
 -- Quick exit when you don't care too much
 set_keymap('n', '<C-q>', ':wa<CR>:NvimTreeClose<CR>:qa<CR>', 'Save and quit')
+
+-- set_keymap('n', 've', 'v$', '')
+-- set_keymap('n', 'vb', 'v0w', '')

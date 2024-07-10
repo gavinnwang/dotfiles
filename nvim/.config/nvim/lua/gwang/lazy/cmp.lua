@@ -110,11 +110,13 @@ return { -- Autocompletion
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
       mapping = cmp.mapping.preset.insert {
-        ['<CR>'] = cmp.mapping.confirm { select = true },
+        -- ['<CR>'] = cmp.mapping.confirm { select = true },
+        ['<C-y>'] = cmp.mapping.confirm { select = true },
+        ['<C-h>'] = cmp.mapping.confirm { select = true },
         ['<C-j>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
         ['<C-k>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+        ['<C-l>'] = cmp.mapping.abort(),
         ['<C-n>'] = cmp.mapping.complete(),
-        ['<C-x>'] = cmp.mapping.abort(),
       },
       sources = {
         { name = 'copilot', group_index = 2, priority = 1000, keyword_length = 1 },
