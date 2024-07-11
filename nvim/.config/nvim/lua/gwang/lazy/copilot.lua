@@ -6,6 +6,7 @@ return {
       suggestion = { enabled = false, auto_trigger = true },
       panel = { enabled = false },
       filetypes = {
+        c = true,
         cpp = function()
           if vim.fn.getcwd():match '/cp$' then
             return false

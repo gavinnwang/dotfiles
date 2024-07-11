@@ -1,7 +1,11 @@
 return {
   {
+    'sainnhe/gruvbox-material',
+    opts = {},
+  },
+  {
     'maxmx03/solarized.nvim',
-    config = function() end,
+    opts = {},
   },
   {
     'jesseleite/nvim-noirbuddy',
@@ -30,15 +34,15 @@ return {
   },
   {
     'folke/tokyonight.nvim',
-    config = function() end,
+    opts = {},
   },
   {
     'navarasu/onedark.nvim',
-    config = function() end,
+    opts = {},
   },
   {
     'sainnhe/sonokai',
-    config = function() end,
+    opts = {},
   },
   {
     'rose-pine/neovim',
