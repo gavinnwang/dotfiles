@@ -5,6 +5,16 @@ return {
     local ls = require 'luasnip'
     local s = ls.snippet
     local t = ls.text_node
+    local i = ls.insert_node
+    local extras = require 'luasnip.extras'
+    local rep = extras.rep
+    local fmt = require('luasnip.extras.fmt').fmt
+    vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+      ls.jump(1)
+    end, { silent = true })
+    vim.keymap.set({ 'i', 's' }, '<C-H>', function()
+      ls.jump(-1)
+    end, { silent = true })
     ls.add_snippets('cpp', {
       s('adj', {
         t {
@@ -76,14 +86,42 @@ return {
           '}',
         },
       }),
+      ls.add_snippets('cpp', {
+        s(
+          'in1',
+          fmt(
+            [[
+int {};
+cin >> {};
+]],
+            { i(1), rep(1) }
+          )
+        ),
+        ls.add_snippets('cpp', {
+          s(
+            'in2',
+            fmt(
+              [[
+int {}, {};
+cin >> {} >> {};
+]],
+              { i(1), i(2), rep(1), rep(2) }
+            )
+          ),
+        }),
+      }),
     })
     ls.add_snippets('cpp', {
-      s('nm', {
-        t {
-          'int n, m;',
-          'cin >> n >> m;',
-        },
-      }),
+      s(
+        'in3',
+        fmt(
+          [[
+int {}, {}, {};
+cin >> {} >> {} >> {};
+]],
+          { i(1), i(2), i(3), rep(1), rep(2), rep(3) }
+        )
+      ),
     })
     ls.add_snippets('cpp', {
       s('dsu', {
@@ -108,6 +146,14 @@ return {
           '  }',
           '};',
         },
+      }),
+    })
+    ls.add_snippets('cpp', {
+      s('ar', {
+        t 'array<int, ',
+        i(1),
+        t '> ',
+        i(2),
       }),
     })
   end,
