@@ -1,4 +1,5 @@
 return {
+  lazy = true,
   'ThePrimeagen/refactoring.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',

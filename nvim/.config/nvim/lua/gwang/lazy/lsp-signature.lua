@@ -1,6 +1,7 @@
 return {
   'ray-x/lsp_signature.nvim',
-  event = 'InsertEnter',
+  -- lazy load on lsp attach
+  event = 'BufEnter',
   opts = {
     floating_window_off_y = -1,
   },

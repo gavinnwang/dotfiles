@@ -1,6 +1,7 @@
 return { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
-  event = 'VimEnter',
+  lazy = true,
+  -- event = 'VimEnter',
   dependencies = {
     'nvim-lua/plenary.nvim',
     {

@@ -1,18 +1,19 @@
 return { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
+  event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    { 'williamboman/mason.nvim', event = { 'BufReadPost', 'BufNewFile' }, config = true }, -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim', event = { 'BufReadPost', 'BufNewFile' }, opts = {} },
 
     -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
-    { 'folke/neodev.nvim', opts = {} },
+    { 'folke/neodev.nvim', lazy = true, opts = {} },
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {

@@ -7,6 +7,9 @@ local function open_files_and_nvim_tree()
   if vim.fn.getcwd():match '/cp$' then
     vim.cmd 'edit a.txt'
     vim.cmd 'edit a.cpp'
+  elseif vim.fn.getcwd():match '/gc$' then
+    vim.cmd 'edit serialize.h'
+    vim.cmd 'edit serialize.c'
   elseif vim.fn.getcwd():match '/gwang$' then
     vim.cmd 'Telescope find_files'
   elseif vim.fn.argc() == 0 then
