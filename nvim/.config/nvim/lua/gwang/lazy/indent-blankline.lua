@@ -1,6 +1,6 @@
 return {
   event = 'VeryLazy',
-  enabled = false,
+  enabled = true,
   'lukas-reineke/indent-blankline.nvim',
   opts = {
     indent = { char = '│' },
