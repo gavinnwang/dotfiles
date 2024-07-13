@@ -12,7 +12,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'andrew-george/telescope-themes' },
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   cmd = { 'Telescope' },
@@ -77,13 +76,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
-    pcall(require('telescope').load_extension, 'themes')
 
     local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[F]ind [F]iles' })
     vim.keymap.set('n', '<leader>w', builtin.live_grep, { desc = '[F]ind [W]ord' })
     vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = '[F]ind [B]uffers' })
     vim.keymap.set('n', '<leader>s', builtin.current_buffer_fuzzy_find, { desc = '[S]earch [F]uzzy' })
-    vim.keymap.set('n', '<leader>th', ':Telescope themes<CR>', { noremap = true, silent = true, desc = 'Theme Switcher' })
+    vim.keymap.set('n', '<leader>th', ':Telescope colorscheme<CR>', { desc = 'Theme Switcher' })
   end,
 }
