@@ -7,8 +7,8 @@ local function open_files_and_nvim_tree()
   elseif vim.fn.getcwd():match '/gc$' then
     vim.cmd 'edit serialize.h'
     vim.cmd 'edit serialize.c'
-  elseif vim.fn.getcwd():match '/gwang$' then
-    vim.cmd 'Telescope find_files'
+    -- elseif vim.fn.getcwd():match '/gwang$' then
+    -- vim.cmd 'Telescope find_files'
   elseif vim.fn.argc() == 0 then
     require('nvim-tree.api').tree.open()
     vim.cmd 'wincmd h' -- Move the cursor to the left buffer (Nvim Tree)
