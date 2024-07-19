@@ -10,10 +10,10 @@ return {
     local rep = extras.rep
     local fmt = require('luasnip.extras.fmt').fmt
 
-    vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+    vim.keymap.set({ 'i', 's' }, '<C-l>', function()
       ls.jump(1)
     end, { silent = true })
-    vim.keymap.set({ 'i', 's' }, '<C-H>', function()
+    vim.keymap.set({ 'i', 's' }, '<C-h>', function()
       ls.jump(-1)
     end, { silent = true })
 
@@ -146,6 +146,18 @@ cin >> {} >> {} >> {};
       ),
 
       s(
+        'in4',
+        fmt(
+          [[
+          int {}, {}, {}, {};
+          cin >> {} >> {} >> {} >> {};
+          {}
+        ]],
+          { i(1), i(2), i(3), i(4), rep(1), rep(2), rep(3), rep(4), i(5) }
+        )
+      ),
+
+      s(
         'grid',
         fmt(
           [[
@@ -194,7 +206,7 @@ struct DSU {{
         'ar',
         fmt(
           [[
-array<int, {}> {};
+array<int, {}>{}
 ]],
           { i(1), i(2) }
         )

@@ -5,6 +5,11 @@ end
 -- Example usage of the helper function
 set_keymap('n', 'n', '10jzz', 'Move cursor down 10 lines and center')
 set_keymap('n', 'm', '10kzz', 'Move cursor up 10 lines and center')
+set_keymap('o', 'n', '10jzz', 'Move cursor down 10 lines and center for visual mode')
+set_keymap('o', 'm', '10kzz', 'Move cursor up 10 lines and center for visual mode')
+set_keymap('x', 'n', '10jzz', 'Move cursor down 10 lines and center for visual mode')
+set_keymap('x', 'm', '10kzz', 'Move cursor up 10 lines and center for visual mode')
+
 set_keymap('n', '<C-d>', '<C-d>zz', 'Center')
 set_keymap('n', '<C-u>', '<C-u>zz', 'Center')
 
