@@ -93,6 +93,18 @@ for (int i = 0; i < n; i++) {{
           {}
         )
       ),
+      s(
+        'vpi',
+        fmt(
+          [[
+  vector<pii> v(n);
+  for (int i = 0; i<n; i++) {{
+    cin >> v[i].first >> v[i].second;
+  }}
+]],
+          {}
+        )
+      ),
 
       s(
         'vn',

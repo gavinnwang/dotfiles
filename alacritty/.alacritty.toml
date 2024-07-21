@@ -4,15 +4,15 @@ TERM = "xterm-256color"
 [font]
 size = 19.0
 
-# [font.bold]
-# family = "Iosevka Nerd Font"
-# style = "Bold"
-# [font.italic]
-# family = "Iosevka Nerd Font"
-# style = "Regular"
-# [font.normal]
-# family = "Iosevka Nerd Font"
-# style = "Regular"
+[font.bold]
+family = "Iosevka Nerd Font"
+style = "Bold"
+[font.italic]
+family = "Iosevka Nerd Font"
+style = "Regular"
+[font.normal]
+family = "Iosevka Nerd Font"
+style = "Regular"
 
 # [font.bold]
 # family = "JetBrainsMono Nerd Font"
@@ -24,15 +24,15 @@ size = 19.0
 # family = "JetBrainsMono Nerd Font"
 # style = "Regular"
 
-[font.bold]
-family = "Terminess Nerd Font"
-style = "Bold"
-[font.italic]
-family = "Terminess Nerd Font"
-style = "Italic"
-[font.normal]
-family = "Terminess Nerd Font"
-style = "Regular"
+# [font.bold]
+# family = "Terminess Nerd Font"
+# style = "Bold"
+# [font.italic]
+# family = "Terminess Nerd Font"
+# style = "Italic"
+# [font.normal]
+# family = "Terminess Nerd Font"
+# style = "Regular"
 
 # Rose-pine
 
