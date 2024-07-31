@@ -29,7 +29,25 @@ vector<vector<int>> adj;
       ),
 
       s(
-        'graph',
+        'iotree',
+        fmt(
+          [[
+int n;
+cin >> n;
+adj.assign(n, vector<int>());
+for (int i = 0; i < n-1; i++) {{
+  int a, b;
+  cin >> a >> b;
+  a--; b--;
+  adj[a].push_back(b);
+  adj[b].push_back(a);
+}}
+]],
+          {}
+        )
+      ),
+      s(
+        'iograph',
         fmt(
           [[
 int n, m;
@@ -170,6 +188,20 @@ cin >> {} >> {} >> {};
       ),
 
       s(
+        'grids',
+        fmt(
+          [[
+int n, m;
+cin >> n >> m;
+vector<string> v(n);
+for (int i = 0; i < n; i++) {{
+  cin >> v[i];
+}}
+]],
+          {}
+        )
+      ),
+      s(
         'grid',
         fmt(
           [[
@@ -227,6 +259,45 @@ array<int, {}>{}
 
     ls.add_snippets('cpp', {
       s(
+        'usaco',
+        fmt(
+          [[
+#ifdef LOCAL
+#else
+#define debug(x...) 'jkg'
+#endif
+
+#include <bits/stdc++.h>
+#define endl '\n';
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+constexpr ll MOD = 1e9 + 7;
+constexpr int INF = 1e9;
+constexpr ll LINF = 1e18;
+
+void solve() {{
+  {}
+}}
+
+int main() {{
+#ifdef LOCAL
+  freopen("../a.txt", "r", stdin);
+#else
+  freopen("{}.in", "r", stdin);
+  freopen("{}.out", "w", stdout);
+#endif
+  cin.tie(nullptr)->sync_with_stdio(false);
+
+  solve();
+}}
+]],
+          { i(2), i(1), rep(1) }
+        )
+      ),
+    })
+    ls.add_snippets('cpp', {
+      s(
         'cpt',
         fmt(
           [[
@@ -256,7 +327,7 @@ int main() {{
 
   int t;
   cin >> t;
-  while (t--) solve();
+  for (int i = 1; i <= t; i++) solve();
 
   // solve();
 }}
@@ -285,7 +356,9 @@ constexpr ll MOD = 1e9 + 7;
 constexpr int INF = 1e9;
 constexpr ll LINF = 1e18;
 
-void solve() {{}}
+void solve() {{
+{}
+}}
 
 int main() {{
 #ifdef LOCAL
@@ -293,14 +366,10 @@ int main() {{
 #endif
   cin.tie(nullptr)->sync_with_stdio(false);
 
-  // int t;
-  // cin >> t;
-  // while (t--) solve();
-
   solve();
 }}
 ]],
-          {}
+          { i(1) }
         )
       ),
     })

@@ -76,6 +76,7 @@ return { -- Autocompletion
       }),
     })
     cmp.setup {
+      experimental = { ghost_text = true },
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },
         expandable_indicator = true,
@@ -96,13 +97,13 @@ return { -- Autocompletion
       },
       window = {
         -- completion = {
-        --   side_padding = 0,
-        --   col_offset = 0,
+        --   -- side_padding = 0,
+        --   -- col_offset = 0,
         --   scrollbar = false,
         --   border = border 'NormalFloat',
         -- },
         -- documentation = {
-        --   side_padding = 0,
+        --   -- side_padding = 0,
         --   scrollbar = false,
         --   winhighlight = 'Normal:CmpDoc',
         --   border = border 'NormalFloat',
@@ -110,7 +111,6 @@ return { -- Autocompletion
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
       mapping = cmp.mapping.preset.insert {
-        -- ['<CR>'] = cmp.mapping.confirm { select = true },
         ['<C-y>'] = cmp.mapping.confirm { select = true },
         ['<C-h>'] = cmp.mapping.confirm { select = true },
         ['<C-j>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },

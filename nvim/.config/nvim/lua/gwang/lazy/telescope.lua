@@ -17,7 +17,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
   cmd = { 'Telescope' },
   config = function()
     local actions = require 'telescope.actions'
-
+    local function find_command()
+      if 1 == vim.fn.executable 'rg' then
+        return { 'rg', '--files', '--color', 'never', '-g', '!.git' }
+      elseif 1 == vim.fn.executable 'fd' then
+        return { 'fd', '--type', 'f', '--color', 'never', '-E', '.git' }
+      elseif 1 == vim.fn.executable 'fdfind' then
+        return { 'fdfind', '--type', 'f', '--color', 'never', '-E', '.git' }
+      elseif 1 == vim.fn.executable 'find' and vim.fn.has 'win32' == 0 then
+        return { 'find', '.', '-type', 'f' }
+      elseif 1 == vim.fn.executable 'where' then
+        return { 'where', '/r', '.', '*' }
+      end
+    end
     require('telescope').setup {
       extensions = {
         ['ui-select'] = {
@@ -83,5 +95,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = '[F]ind [B]uffers' })
     vim.keymap.set('n', '<leader>s', builtin.current_buffer_fuzzy_find, { desc = '[S]earch [F]uzzy' })
     vim.keymap.set('n', '<leader>th', ':Telescope colorscheme<CR>', { desc = 'Theme Switcher' })
+    vim.keymap.set('n', '<leader>gc', ':Telescope git_commits<CR>', { desc = 'Git Commits' })
+    vim.keymap.set('n', '<leader>gs', ':Telescope git_status<CR>', { desc = 'Git Status' })
   end,
 }

@@ -48,16 +48,16 @@ return {
     'sainnhe/sonokai',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {},
+    init = function()
+      vim.o.termguicolors = true
+      vim.cmd.colorscheme 'sonokai'
+      vim.cmd.hi 'Comment gui=none'
+    end,
   },
   {
     'rose-pine/neovim',
     event = { 'BufReadPre', 'BufNewFile' },
     name = 'rose-pine',
     priority = 1000,
-    init = function()
-      vim.o.termguicolors = true
-      vim.cmd.colorscheme 'rose-pine'
-      vim.cmd.hi 'Comment gui=none'
-    end,
   },
 }
