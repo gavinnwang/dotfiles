@@ -373,5 +373,55 @@ int main() {{
         )
       ),
     })
+
+    ls.add_snippets('cpp', {
+      s(
+        'rng',
+        fmt(
+          [[
+    mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+    ]],
+          {}
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'pw',
+        fmt(
+          [[
+    auto pw = [&](ll a, ll b) -> ll {{
+      ll r = 1;
+      while (b) {{
+        if (b & 1) r = (r * a) % MOD;
+        b /= 2;
+        a = (a * a) % MOD;
+      }}
+      return r;
+    }};
+    ]],
+          {}
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'choose',
+        fmt(
+          [[
+    vector<ll> fac(n + 1);
+    fac[0] = 1;
+    for (int i = 1; i <= n; i++) fac[i] = (fac[i - 1] * i) % MOD;
+    auto C = [&](ll n, ll k) -> ll {{
+      if (n < k) return 0LL;
+      return (fac[n] * pw(fac[k] * fac[n - k] % MOD, MOD - 2)) % MOD;
+    }};
+    ]],
+          {}
+        )
+      ),
+    })
   end,
 }
