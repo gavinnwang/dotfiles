@@ -140,6 +140,16 @@ for (int i = 0; i < n; i++) {{
       ),
 
       s(
+        'inn',
+        fmt(
+          [[
+int n;
+cin >> n;
+]],
+          {}
+        )
+      ),
+      s(
         'in1',
         fmt(
           [[
@@ -272,6 +282,9 @@ array<int, {}>{}
 using namespace std;
 using ll = long long;
 using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+using vpi = vector<pii>;
 constexpr ll MOD = 1e9 + 7;
 constexpr int INF = 1e9;
 constexpr ll LINF = 1e18;
@@ -311,6 +324,9 @@ int main() {{
 using namespace std;
 using ll = long long;
 using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+using vpi = vector<pii>;
 constexpr ll MOD = 1e9 + 7;
 constexpr int INF = 1e9;
 constexpr ll LINF = 1e18;
@@ -352,6 +368,9 @@ int main() {{
 using namespace std;
 using ll = long long;
 using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+using vpi = vector<pii>;
 constexpr ll MOD = 1e9 + 7;
 constexpr int INF = 1e9;
 constexpr ll LINF = 1e18;
@@ -419,6 +438,26 @@ int main() {{
       return (fac[n] * pw(fac[k] * fac[n - k] % MOD, MOD - 2)) % MOD;
     }};
     ]],
+          {}
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'point',
+        fmt(
+          [[
+struct P {{
+  int x, y;
+  void read() {{ cin >> x >> y; }}
+  P operator+(const P &b) const {{ return P{{x + b.x, y + b.y}}; }}
+  P operator-(const P &b) const {{ return P{{x - b.x, y - b.y}}; }}
+  ll operator*(const P &b) const {{ return (ll)x * b.y - (ll)y * b.x; }}
+  ll cross(const P &b, const P &c) const {{ return (b - *this) * (c - *this); }}
+}};
+using vp = vector<P>;
+      ]],
           {}
         )
       ),
