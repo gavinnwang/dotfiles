@@ -140,6 +140,21 @@ for (int i = 0; i < n; i++) {{
       ),
 
       s(
+        'vpin',
+        fmt(
+          [[
+int n;
+cin >> n;
+vpi v(n);
+for (int i = 0; i < n; i++) {{
+  cin >> v[i].first >> v[i].second;
+}}
+]],
+          {}
+        )
+      ),
+
+      s(
         'inn',
         fmt(
           [[
@@ -457,6 +472,20 @@ struct P {{
   ll cross(const P &b, const P &c) const {{ return (b - *this) * (c - *this); }}
 }};
 using vp = vector<P>;
+      ]],
+          {}
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'dist',
+        fmt(
+          [[
+int dist(pii& x, pii &y) {{
+  return (x.first - y.first) * (x.first - y.first) + (x.second - y.second) * (x.second - y.second);
+}}
       ]],
           {}
         )
