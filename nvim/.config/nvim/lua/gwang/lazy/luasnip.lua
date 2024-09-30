@@ -29,7 +29,7 @@ vector<vector<int>> adj;
       ),
 
       s(
-        'iotree',
+        'intree',
         fmt(
           [[
 int n;
@@ -47,7 +47,7 @@ for (int i = 0; i < n-1; i++) {{
         )
       ),
       s(
-        'iograph',
+        'ingraph',
         fmt(
           [[
 int n, m;
@@ -132,6 +132,21 @@ int n;
 cin >> n;
 vector<int> v(n);
 for (int i = 0; i < n; i++) {{
+  cin >> v[i];
+}}
+]],
+          {}
+        )
+      ),
+
+      s(
+        'vn1',
+        fmt(
+          [[
+int n;
+cin >> n;
+vector<int> v(n+1);
+for (int i = 1; i <= n; i++) {{
   cin >> v[i];
 }}
 ]],
@@ -488,6 +503,60 @@ int dist(pii& x, pii &y) {{
 }}
       ]],
           {}
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'sor',
+        fmt(
+          [[
+sort({}.begin(), {}.end());
+{}
+      ]],
+          { i(1), rep(1), i(2) }
+        )
+      ),
+    })
+    ls.add_snippets('cpp', {
+      s(
+        'sortcus',
+        fmt(
+          [[
+sort({}.begin(), {}.end(), [&](const auto& a, const auto& b) -> bool {{
+  {}
+}});
+      ]],
+          { i(1), rep(1), i(2) }
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'lam',
+        fmt(
+          [[
+auto {} = [&]({}) -> {} {{
+  {}
+}};
+      ]],
+          { i(1), i(2), i(3), i(4) }
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'lamrec',
+        fmt(
+          [[
+auto {} = [&](auto {}, {}) -> void {{
+  {}
+}};
+      ]],
+          { i(1), rep(1), i(2), i(3) }
         )
       ),
     })
