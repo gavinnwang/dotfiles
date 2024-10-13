@@ -519,6 +519,19 @@ sort({}.begin(), {}.end());
         )
       ),
     })
+
+    ls.add_snippets('cpp', {
+      s(
+        'sorr',
+        fmt(
+          [[
+sort({}.rbegin(), {}.rend());
+{}
+      ]],
+          { i(1), rep(1), i(2) }
+        )
+      ),
+    })
     ls.add_snippets('cpp', {
       s(
         'sortcus',
@@ -557,6 +570,62 @@ auto {} = [&](auto {}, {}) -> void {{
 }};
       ]],
           { i(1), rep(1), i(2), i(3) }
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'info',
+        fmt(
+          [[
+vi sz(n + 1);
+vi pa(n + 1);
+vi dep(n + 1);
+
+auto info = [&](auto info, int u, int p) -> void {{
+  sz[u] = 1;
+  pa[u] = p;
+  for (int v : adj[u]) {{
+    if (v == p) continue;
+    dep[v] = dep[u] + 1;
+    info(info, v, u);
+    sz[u] += sz[v];
+  }}
+}};
+      ]],
+          {}
+        )
+      ),
+    })
+
+    ls.add_snippets('cpp', {
+      s(
+        'hld',
+        fmt(
+          [[
+vi id(n + 1);
+vi tp(n + 1);
+int cur_id = 1;
+
+auto hld = [&](auto hld, int u, int p, int top) -> void {{
+  id[u] = cur_id++;
+  tp[u] = top;
+  int mx_v = -1, mx_sz = -1;
+  for (int v : adj[u]) {{
+    if (v == p) continue;
+    if (sz[v] > mx_sz) mx_v = v, mx_sz = sz[v];
+  }}
+  if (mx_v == -1) return; // leaf
+  hld(hld, mx_v, u, top);
+
+  for (int v : adj[u]) {{
+    if (v == p || v == mx_v) continue;
+    hld(hld, v, u, v);
+  }}
+}};
+      ]],
+          {}
         )
       ),
     })
