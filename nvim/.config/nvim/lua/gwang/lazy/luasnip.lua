@@ -136,6 +136,18 @@ cin >> n;
         )
       ),
 
+      -- Snippet for reading an integer n and integer m
+      s(
+        'inm',
+        fmt(
+          [[
+int n, m;
+cin >> n >> m;
+]],
+          {}
+        )
+      ),
+
       -- Snippet for reading one integer with a variable name
       s(
         'in1',
