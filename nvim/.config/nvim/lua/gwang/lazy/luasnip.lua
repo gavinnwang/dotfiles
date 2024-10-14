@@ -406,6 +406,194 @@ auto path = [&](int x, int y) -> int {{
           {}
         )
       ),
+      s(
+        'usaco',
+        fmt(
+          [[
+#ifdef LOCAL
+#else
+#define debug(x...) 'jkg'
+#endif
+#include <bits/stdc++.h>
+#define endl '\n'
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+using vpi = vector<pii>;
+constexpr ll MOD = 1e9 + 7;
+constexpr int INF = 1e9;
+constexpr ll LINF = 1e18;
+void solve() {{
+  {}
+}}
+int main() {{
+#ifdef LOCAL
+  freopen("../a.txt", "r", stdin);
+#else
+  freopen("{}.in", "r", stdin);
+  freopen("{}.out", "w", stdout);
+#endif
+  cin.tie(nullptr)->sync_with_stdio(false);
+  solve();
+}}
+]],
+          { i(2), i(1), rep(1) }
+        )
+      ),
+
+      -- Competitive programming template for multiple test cases
+      s(
+        'cpt',
+        fmt(
+          [[
+#ifdef LOCAL
+#else
+#define debug(x...) 'jkg'
+#endif
+#include <bits/stdc++.h>
+#define endl '\n'
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+using vpi = vector<pii>;
+constexpr ll MOD = 1e9 + 7;
+constexpr int INF = 1e9;
+constexpr ll LINF = 1e18;
+void solve() {{
+  {}
+}}
+int main() {{
+#ifdef LOCAL
+  freopen("../a.txt", "r", stdin);
+#endif
+  cin.tie(nullptr)->sync_with_stdio(false);
+  int t;
+  cin >> t;
+  for (int i = 1; i <= t; i++) solve();
+  // solve();
+}}
+]],
+          { i(1) }
+        )
+      ),
+
+      -- Simple competitive programming template
+      s(
+        'cp1',
+        fmt(
+          [[
+#ifdef LOCAL
+#else
+#define debug(x...) 'jkg'
+#endif
+#include <bits/stdc++.h>
+#define endl '\n'
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+using vpi = vector<pii>;
+constexpr ll MOD = 1e9 + 7;
+constexpr int INF = 1e9;
+constexpr ll LINF = 1e18;
+void solve() {{
+{}
+}}
+int main() {{
+#ifdef LOCAL
+  freopen("../a.txt", "r", stdin);
+#endif
+  cin.tie(nullptr)->sync_with_stdio(false);
+  solve();
+}}
+]],
+          { i(1) }
+        )
+      ),
+
+      -- Random number generator setup
+      s(
+        'rng',
+        fmt(
+          [[
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+]],
+          {}
+        )
+      ),
+
+      -- Power function snippet
+      s(
+        'pw',
+        fmt(
+          [[
+auto pw = [&](ll a, ll b) -> ll {{
+  ll r = 1;
+  while (b) {{
+    if (b & 1) r = (r * a) % MOD;
+    b /= 2;
+    a = (a * a) % MOD;
+  }}
+  return r;
+}};
+]],
+          {}
+        )
+      ),
+
+      -- Combinatorics snippet for nCk (choose function)
+      s(
+        'choose',
+        fmt(
+          [[
+vector<ll> fac(n + 1);
+fac[0] = 1;
+for (int i = 1; i <= n; i++) fac[i] = (fac[i - 1] * i) % MOD;
+auto C = [&](ll n, ll k) -> ll {{
+  if (n < k) return 0LL;
+  return (fac[n] * pw(fac[k] * fac[n - k] % MOD, MOD - 2)) % MOD;
+}};
+]],
+          {}
+        )
+      ),
+
+      -- Struct for representing a point in 2D space with cross product calculation
+      s(
+        'point',
+        fmt(
+          [[
+struct P {{
+  int x, y;
+  void read() {{ cin >> x >> y; }}
+  P operator+(const P &b) const {{ return P{{x + b.x, y + b.y}}; }}
+  P operator-(const P &b) const {{ return P{{x - b.x, y - b.y}}; }}
+  ll operator*(const P &b) const {{ return (ll)x * b.y - (ll)y * b.x; }}
+  ll cross(const P &b, const P &c) const {{ return (b - *this) * (c - *this); }}
+}};
+using vp = vector<P>;
+]],
+          {}
+        )
+      ),
+
+      -- Distance function snippet for pairs of integers
+      s(
+        'dist',
+        fmt(
+          [[
+int dist(pii& x, pii& y) {{
+  return (x.first - y.first) * (x.first - y.first) + (x.second - y.second) * (x.second - y.second);
+}}
+]],
+          {}
+        )
+      ),
     })
   end,
 }
