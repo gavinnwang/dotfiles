@@ -138,7 +138,7 @@ cin >> n;
 
       -- Snippet for reading an integer n and integer m
       s(
-        'inm',
+        'innm',
         fmt(
           [[
 int n, m;
