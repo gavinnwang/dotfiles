@@ -1,14 +1,48 @@
+# Don't insert a blank line before the prompt
 add_newline = false
-format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$python\
-$line_break\
-$time\
-$character"""
 
+# Define the order of the prompt elements
+format = """
+$username$hostname$directory$git_branch$git_commit$git_state$git_status$line_break$time$character"""
+
+# Username settings
+[username]
+disabled = false
+style_user = "green bold dimmed"
+style_root = "black bold"
+format = "[$user]($style) "
+
+# Hostname settings (only shown for SSH)
+[hostname]
+disabled = false
+ssh_only = true
+format = "on [$hostname](red) "
+
+# Directory settings
+[directory]
+disabled = false
+style = "cyan bold dimmed"
+
+# Git branch settings
+[git_branch]
+disabled = false
+style = "bold purple dimmed"
+
+# Git commit settings
+[git_commit]
+disabled = false
+
+# Git state settings
+[git_state]
+disabled = false
+
+# Git status settings
+[git_status]
+disabled = false
+style = "red"
+
+# # Time settings
+# [time]
+# disabled = false
+# style = "bold gray"
+# format = "[\\[$time\\]]($style) "
