@@ -112,6 +112,9 @@ return { -- LSP Configuration & Plugins
       clangd = {
         cmd = {
           'clangd',
+          '--background-index',
+          '--clang-tidy',
+          '--cross-file-rename',
           '--offset-encoding=utf-16',
         },
       },

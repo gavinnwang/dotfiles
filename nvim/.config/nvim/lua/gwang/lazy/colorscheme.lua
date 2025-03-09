@@ -3,6 +3,11 @@ return {
     'sainnhe/gruvbox-material',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {},
+    init = function()
+      vim.o.termguicolors = true
+      vim.cmd.colorscheme 'sonokai'
+      vim.cmd.hi 'Comment gui=none'
+    end,
   },
   {
     'maxmx03/solarized.nvim',
@@ -48,11 +53,6 @@ return {
     'sainnhe/sonokai',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {},
-    init = function()
-      vim.o.termguicolors = true
-      vim.cmd.colorscheme 'sonokai'
-      vim.cmd.hi 'Comment gui=none'
-    end,
   },
   {
     'rose-pine/neovim',

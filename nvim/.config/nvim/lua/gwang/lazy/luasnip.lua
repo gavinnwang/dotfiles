@@ -606,6 +606,25 @@ int dist(pii& x, pii& y) {{
           {}
         )
       ),
+
+      -- Power function snippet for integers using a lambda function
+      s(
+        'pow',
+        fmt(
+          [[
+auto pow = [](ll b, ll p) -> ll {{
+  ll res = 1;
+  while (p > 0) {{
+    if (p & 1) res *= b;
+    b *= b;
+    p >>= 1;
+  }}
+  return res;
+}};
+]],
+          {}
+        )
+      ),
     })
   end,
 }

@@ -20,7 +20,7 @@ return {
     end,
     filters = {
       dotfiles = false,
-      custom = { '.git' },
+      custom = { '.git', '__pycache__', '.DS_Store' },
     },
     disable_netrw = true,
     hijack_netrw = true,
