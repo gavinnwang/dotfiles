@@ -130,56 +130,28 @@ style = "Regular"
 # cyan = "#ebbcba"
 # white = "#e0def4"
 
-# solarized
-# # Default colors
-# [colors.primary]
-# background = '#fdf6e3'
-# foreground = '#586e75'
-#
-# # Normal colors
-# [colors.normal]
-# black   = '#073642'
-# red     = '#dc322f'
-# green   = '#859900'
-# yellow  = '#b58900'
-# blue    = '#268bd2'
-# magenta = '#d33682'
-# cyan    = '#2aa198'
-# white   = '#eee8d5'
-#
-# # Bright colors
-# [colors.bright]
-# black   = '#002b36'
-# red     = '#cb4b16'
-# green   = '#586e75'
-# yellow  = '#657b83'
-# blue    = '#839496'
-# magenta = '#6c71c4'
-# cyan    = '#93a1a1'
-# white   = '#fdf6e3'
-
 # Colors (Gruvbox Material Dark Medium)
 
-[colors.primary]
-background = '#282828'
-foreground = '#dfbf8e'
-
-[colors.normal]
-black   = '#665c54'
-red     = '#ea6962'
-green   = '#a9b665'
-yellow  = '#e78a4e'
-blue    = '#7daea3'
-magenta = '#d3869b'
-cyan    = '#89b482'
-white   = '#dfbf8e'
-
-[colors.bright]
-black   = '#928374'
-red     = '#ea6962'
-green   = '#a9b665'
-yellow  = '#e3a84e'
-blue    = '#7daea3'
-magenta = '#d3869b'
-cyan    = '#89b482'
-white   = '#dfbf8e'
+# [colors.primary]
+# background = '#282828'
+# foreground = '#dfbf8e'
+#
+# [colors.normal]
+# black   = '#665c54'
+# red     = '#ea6962'
+# green   = '#a9b665'
+# yellow  = '#e78a4e'
+# blue    = '#7daea3'
+# magenta = '#d3869b'
+# cyan    = '#89b482'
+# white   = '#dfbf8e'
+#
+# [colors.bright]
+# black   = '#928374'
+# red     = '#ea6962'
+# green   = '#a9b665'
+# yellow  = '#e3a84e'
+# blue    = '#7daea3'
+# magenta = '#d3869b'
+# cyan    = '#89b482'
+# white   = '#dfbf8e'
