@@ -5,7 +5,7 @@ return {
     opts = {},
     init = function()
       vim.o.termguicolors = true
-      vim.cmd.colorscheme 'tokyonight-storm'
+      vim.cmd.colorscheme 'sonokai'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
