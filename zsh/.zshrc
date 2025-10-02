@@ -70,3 +70,25 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH=$PATH:$HOME/go/bin
+# bun completions
+[ -s "/Users/gavinwang/.bun/_bun" ] && source "/Users/gavinwang/.bun/_bun"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+. "$HOME/.local/bin/env"
+
+alias c='clear'
+#git
+alias gcm='git commit -m'
+alias ga='git add .'
+alias gs='git status'
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias gpu='git push'
+alias gamend='git add . && git commit --amend --no-edit -n && git push -f'
+alias gcm='git checkout master'
+alias g-='git checkout -'
+alias gg='f() { git add . && git commit -m "$1" && git push; }; f'
